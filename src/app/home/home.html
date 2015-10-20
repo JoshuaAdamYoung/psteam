@@ -1,0 +1,21 @@
+<div style="color:#FFF;background:#000;">
+  <h1>{{home.data.title}}</h1>
+  <p>
+    {{home.data.shortDesc}}
+  </p>
+</div>
+<button type="button" ng-click="home.openForm()">New Message</button>
+<div ng-show="home.formOpen">
+<input type="text" ng-model="form.title" placeholder="title"></input>
+<input type="text" ng-model="form.msg" placeholder="message"></input>
+<input type="text" ng-model="form.author" placeholder="author"></input>
+<button type="button" name="button" ng-click="home.newMessage(form)">SUBMIT</button>
+</div>
+<div style="border-width:5px;border-color:#000;">
+<h2>Messages</h2>
+</div>
+<div ng-repeat="message in home.messages | orderBy: 'date' : true ">
+  <h3>{{message.title}}</h3>
+  <span>{{message.text}}</span>
+  <i>{{message.author}}</i> - {{message.postedOn | date:'dd-MM hh:mm'}}
+</div>
